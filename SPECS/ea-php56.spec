@@ -153,22 +153,22 @@
 %define ea_openssl_ver 1.0.2o-2
 %define ea_libcurl_ver 7.68.0-2
 
-Summary:  PHP scripting language for creating dynamic web sites
+Summary:  EOL PHP scripting language for creating dynamic web sites
 %if %{with_httpd}
-Summary:  PHP DSO
+Summary:  EOL PHP DSO
 %endif
 Vendor:   cPanel, Inc.
 Name:     %{?scl_prefix}php
 Version:  5.6.40
 # Doing release_prefix this way for Release allows for OBS-proof versioning, See EA-4584 for more details
-%define release_prefix 24
+%define release_prefix 25
 Release: %{release_prefix}%{?dist}.cpanel
 # All files licensed under PHP version 3.01, except
 # Zend is licensed under Zend
 # TSRM is licensed under BSD
 License:  PHP and Zend and BSD
 Group:    Development/Languages
-URL:      http://www.php.net/
+URL: https://endoflife.date/php
 
 Source0: http://www.php.net/distributions/php-%{version}%{?rcver}.tar.bz2
 Source1: https://www.litespeedtech.com/packages/lsapi/php-litespeed-8.0.1.tgz
@@ -271,6 +271,8 @@ Requires: %{?scl_prefix}php-cli = %{version}-%{release}
 
 
 %description
+scl-php56 has reached End of Life.
+
 %if %{with_httpd}
 Package that installs Apache`s mod_php DSO module for PHP 5.6
 %else
@@ -285,7 +287,7 @@ use of PHP coding is probably as a replacement for CGI scripts.
 
 %package cli
 Group: Development/Languages
-Summary: Command-line interface for PHP
+Summary: EOL Command-line interface for PHP
 Requires: %{?scl_prefix}php-common = %{version}-%{release}
 Provides: %{?scl_prefix}php-cgi = %{version}-%{release}, %{?scl_prefix}php-cgi = %{version}-%{release}
 Provides: %{?scl_prefix}php-pcntl = %{version}-%{release} , %{?scl_prefix}php-pcntl = %{version}-%{release}
@@ -297,6 +299,8 @@ Requires: ea-php-cli-lsphp
 Requires: %{?scl_prefix}php-litespeed = %{version}-%{release}
 
 %description cli
+scl-php56 has reached End of Life.
+
 The %{?scl_prefix}php-cli package contains the command-line interface
 executing PHP scripts, /usr/bin/php, and the CGI interface.
 
@@ -304,7 +308,7 @@ executing PHP scripts, /usr/bin/php, and the CGI interface.
 %if %{with_fpm}
 %package fpm
 Group: Development/Languages
-Summary: PHP FastCGI Process Manager
+Summary: EOL PHP FastCGI Process Manager
 # All files licensed under PHP version 3.01, except
 # Zend is licensed under Zend
 # TSRM and fpm are licensed under BSD
@@ -330,6 +334,8 @@ Requires(postun): initscripts
 %endif
 
 %description fpm
+scl-php56 has reached End of Life.
+
 PHP-FPM (FastCGI Process Manager) is an alternative PHP FastCGI
 implementation with some additional features useful for sites of
 any size, especially busier sites.
@@ -337,18 +343,20 @@ any size, especially busier sites.
 
 %if %{with_lsws}
 %package litespeed
-Summary: LiteSpeed Web Server PHP support
+Summary: EOL LiteSpeed Web Server PHP support
 Group: Development/Languages
 Requires: %{?scl_prefix}php-common = %{version}-%{release}
 
 %description litespeed
+scl-php56 has reached End of Life.
+
 The %{?scl_prefix}php-litespeed package provides the %{_bindir}/lsphp command
 used by the LiteSpeed Web Server (LSAPI enabled PHP).
 %endif
 
 %package common
 Group: Development/Languages
-Summary: Common files for PHP
+Summary: EOL Common files for PHP
 # All files licensed under PHP version 3.01, except
 # fileinfo is licensed under PHP version 3.0
 # regex, libmagic are licensed under BSD
@@ -385,24 +393,28 @@ Provides: %{?scl_prefix}php-zlib = %{version}-%{release}, %{?scl_prefix}php-zlib
 %{?scl:Requires: %{scl}-runtime}
 
 %description common
+scl-php56 has reached End of Life.
+
 The %{?scl_prefix}php-common package contains files used by both
 the %{?scl_prefix}php package and the %{?scl_prefix}php-cli package.
 
 %package devel
 Group: Development/Libraries
-Summary: Files needed for building PHP extensions
+Summary: EOL Files needed for building PHP extensions
 Requires: %{?scl_prefix}php-cli = %{version}-%{release}, autoconf, automake
 %if %{with_pcre}
 Requires: pcre-devel >= 8.10
 %endif
 
 %description devel
+scl-php56 has reached End of Life.
+
 The %{?scl_prefix}php-devel package contains the files needed for building PHP
 extensions. If you need to compile your own PHP extensions, you will
 need to install this package.
 
 %package opcache
-Summary:   The Zend OPcache
+Summary:   EOL The Zend OPcache
 Group:     Development/Languages
 License:   PHP
 Requires:  %{?scl_prefix}php-common = %{version}-%{release}
@@ -413,6 +425,8 @@ Provides:  %{?scl_prefix}php-pecl(opcache) = %{opcachever}
 Provides:  %{?scl_prefix}php-pecl(opcache) = %{opcachever}
 
 %description opcache
+scl-php56 has reached End of Life.
+
 The Zend OPcache provides faster PHP execution through opcode caching and
 optimization. It improves PHP performance by storing precompiled script
 bytecode in the shared memory. This eliminates the stages of reading code from
@@ -420,7 +434,7 @@ the disk and compiling it on future access. In addition, it applies a few
 bytecode optimization patterns that make code execution faster.
 
 %package bz2
-Summary: A module for PHP applications that interface with .bz2 files
+Summary: EOL A module for PHP applications that interface with .bz2 files
 Group: Development/Languages
 License: PHP
 Requires: %{?scl_prefix}php-common = %{version}-%{release}
@@ -428,11 +442,13 @@ Requires: %{?scl_prefix}php-cli = %{version}-%{release}
 Provides: %{?scl_prefix}php-bz2 = %{version}-%{release}, %{?scl_prefix}php-bz2 = %{version}-%{release}
 
 %description bz2
+scl-php56 has reached End of Life.
+
 The php-bz2 package delivers a module which will allow PHP scripts to
 interface with .bz2 files.
 
 %package calendar
-Summary: A module for PHP applications that need date/time calculations
+Summary: EOL A module for PHP applications that need date/time calculations
 Group: Development/Languages
 License: PHP
 Requires: %{?scl_prefix}php-common = %{version}-%{release}
@@ -440,11 +456,13 @@ Requires: %{?scl_prefix}php-cli = %{version}-%{release}
 Provides: %{?scl_prefix}php-calendar = %{version}-%{release}, %{?scl_prefix}php-calendar = %{version}-%{release}
 
 %description calendar
+scl-php56 has reached End of Life.
+
 The php-calendar package delivers a module which will allow PHP scripts to
 do date and time conversions and calculations.
 
 %package curl
-Summary: A module for PHP applications that need to interface with curl
+Summary: EOL A module for PHP applications that need to interface with curl
 Group: Development/Languages
 License: PHP
 Requires: %{?scl_prefix}php-common = %{version}-%{release}
@@ -454,6 +472,8 @@ BuildRequires: libssh2 libssh2-devel libidn libidn-devel ea-libnghttp2-devel
 Provides: %{?scl_prefix}php-curl = %{version}-%{release}, %{?scl_prefix}php-curl = %{version}-%{release}
 
 %description curl
+scl-php56 has reached End of Life.
+
 The php-curl package delivers a module which will allow PHP
 scripts to connect and communicate to many different types of servers
 with many different types of protocols. libcurl currently supports the
@@ -463,7 +483,7 @@ PUT, FTP uploading, HTTP form based upload, proxies, cookies, and
 user+password authentication.
 
 %package exif
-Summary: A module for PHP applications that need to work with image metadata
+Summary: EOL A module for PHP applications that need to work with image metadata
 Group: Development/Languages
 License: PHP
 Requires: %{?scl_prefix}php-common = %{version}-%{release}
@@ -471,13 +491,15 @@ Requires: %{?scl_prefix}php-cli = %{version}-%{release}
 Provides: %{?scl_prefix}php-exif = %{version}-%{release}, %{?scl_prefix}php-exif = %{version}-%{release}
 
 %description exif
+scl-php56 has reached End of Life.
+
 The php-exif package delivers a module which will allow PHP scripts to
 work with image meta data. For example, you may use exif functions to
 read meta data of pictures taken from digital cameras by working with
 information stored in the headers of the JPEG and TIFF images.
 
 %package fileinfo
-Summary: A module for PHP applications that need to detect file types
+Summary: EOL A module for PHP applications that need to detect file types
 Group: Development/Languages
 License: PHP
 Requires: %{?scl_prefix}php-common = %{version}-%{release}
@@ -485,6 +507,8 @@ Requires: %{?scl_prefix}php-cli = %{version}-%{release}
 Provides: %{?scl_prefix}php-fileinfo = %{version}-%{release}, %{?scl_prefix}php-fileinfo = %{version}-%{release}
 
 %description fileinfo
+scl-php56 has reached End of Life.
+
 The php-fileinfo package delivers a module which will allow PHP
 scripts to try to guess the content type and encoding of a file by
 looking for certain magic byte sequences at specific positions within
@@ -492,7 +516,7 @@ the file. While this is not a bullet proof approach the heuristics
 used do a very good job.
 
 %package ftp
-Summary: A module for PHP applications that need full FTP protocol support
+Summary: EOL A module for PHP applications that need full FTP protocol support
 Requires: %{?scl_prefix}php-cli = %{version}-%{release}
 Group: Development/Languages
 License: PHP
@@ -500,6 +524,8 @@ Requires: %{?scl_prefix}php-common = %{version}-%{release}
 Provides: %{?scl_prefix}php-ftp = %{version}-%{release}, %{?scl_prefix}php-ftp = %{version}-%{release}
 
 %description ftp
+scl-php56 has reached End of Life.
+
 The php-ftp package delivers a module which will allow PHP scripts
 client access to files servers speaking the File Transfer Protocol
 (FTP) as defined in http://www.faqs.org/rfcs/rfc959. This extension is
@@ -510,7 +536,7 @@ with the %{?scl_prefix}php-filesystem package which provides a simpler
 and more intuitive interface.
 
 %package gettext
-Summary: A module for PHP applications that need native language support
+Summary: EOL A module for PHP applications that need native language support
 Group: Development/Languages
 License: PHP
 Requires: %{?scl_prefix}php-common = %{version}-%{release}
@@ -518,6 +544,8 @@ Requires: %{?scl_prefix}php-cli = %{version}-%{release}
 Provides: %{?scl_prefix}php-gettext = %{version}-%{release}, %{?scl_prefix}php-gettext = %{version}-%{release}
 
 %description gettext
+scl-php56 has reached End of Life.
+
 The php-gettext package delivers a module which will allow PHP scripts
 to access an NLS (Native Language Support) API which can be used to
 internationalize your PHP applications. Please see the gettext
@@ -526,7 +554,7 @@ functions or view the docs at
 http://www.gnu.org/software/gettext/manual/gettext.html.
 
 %package iconv
-Summary: A module for PHP applications that need to convert character sets
+Summary: EOL A module for PHP applications that need to convert character sets
 Group: Development/Languages
 License: PHP
 Requires: %{?scl_prefix}php-common = %{version}-%{release}
@@ -534,6 +562,8 @@ Requires: %{?scl_prefix}php-cli = %{version}-%{release}
 Provides: %{?scl_prefix}php-iconv = %{version}-%{release}, %{?scl_prefix}php-iconv = %{version}-%{release}
 
 %description iconv
+scl-php56 has reached End of Life.
+
 The php-iconv package delivers a module which will allow PHP scripts
 to access the iconv character set conversion facility. With this
 module, you can turn a string represented by a local character set
@@ -545,7 +575,7 @@ idea to install the GNU libiconv library. It will most likely end up
 with more consistent results.
 
 %package imap
-Summary: A module for PHP applications that use IMAP
+Summary: EOL A module for PHP applications that use IMAP
 Group: Development/Languages
 # All files licensed under PHP version 3.01
 License: PHP
@@ -559,12 +589,14 @@ BuildRequires: %{?scl_prefix}libc-client-devel
 Conflicts: %{?scl_prefix}php-recode = %{version}-%{release}
 
 %description imap
+scl-php56 has reached End of Life.
+
 The %{?scl_prefix}php-imap module will add IMAP (Internet Message Access Protocol)
 support to PHP. IMAP is a protocol for retrieving and uploading e-mail
 messages on mail servers. PHP is an HTML-embedded scripting language.
 
 %package ldap
-Summary: A module for PHP applications that use LDAP
+Summary: EOL A module for PHP applications that use LDAP
 Group: Development/Languages
 # All files licensed under PHP version 3.01
 License: PHP
@@ -574,13 +606,15 @@ Requires: ea-openssl >= %{ea_openssl_ver}
 BuildRequires: cyrus-sasl-devel, openldap-devel, ea-openssl >= %{ea_openssl_ver}, ea-openssl-devel >= %{ea_openssl_ver}
 
 %description ldap
+scl-php56 has reached End of Life.
+
 The %{?scl_prefix}php-ldap package adds Lightweight Directory Access Protocol (LDAP)
 support to PHP. LDAP is a set of protocols for accessing directory
 services over the Internet. PHP is an HTML-embedded scripting
 language.
 
 %package pdo
-Summary: A database access abstraction module for PHP applications
+Summary: EOL A database access abstraction module for PHP applications
 Group: Development/Languages
 # All files licensed under PHP version 3.01
 License: PHP
@@ -595,6 +629,8 @@ Provides: %{?scl_prefix}php-sqlite3 = %{version}-%{release}, %{?scl_prefix}php-s
 Provides: %{?scl_prefix}php-pdo_sqlite = %{version}-%{release}, %{?scl_prefix}php-pdo_sqlite = %{version}-%{release}
 
 %description pdo
+scl-php56 has reached End of Life.
+
 The %{?scl_prefix}php-pdo package contains a dynamic shared object that will add
 a database access abstraction layer to PHP.  This module provides
 a common interface for accessing MySQL, PostgreSQL or other
@@ -602,7 +638,7 @@ databases.
 
 %if %{with_libmysql}
 %package mysql
-Summary: A module for PHP applications that use MySQL databases
+Summary: EOL A module for PHP applications that use MySQL databases
 Group: Development/Languages
 # All files licensed under PHP version 3.01
 License: PHP
@@ -615,6 +651,8 @@ BuildRequires: mysql-devel >= 4.1.0
 Conflicts: %{?scl_prefix}php-mysqlnd
 
 %description mysql
+scl-php56 has reached End of Life.
+
 The %{?scl_prefix}php-mysql package contains a dynamic shared object that will add
 MySQL database support to PHP. MySQL is an object-relational database
 management system. PHP is an HTML-embeddable scripting language. If
@@ -623,7 +661,7 @@ this package and the php package.
 %endif
 
 %package mysqlnd
-Summary: A module for PHP applications that use MySQL databases
+Summary: EOL A module for PHP applications that use MySQL databases
 Group: Development/Languages
 # All files licensed under PHP version 3.01
 License: PHP
@@ -639,6 +677,8 @@ Obsoletes: %{?scl_prefix}php-mysql < %{version}-%{release}
 %endif
 
 %description mysqlnd
+scl-php56 has reached End of Life.
+
 The %{?scl_prefix}php-mysqlnd package contains a dynamic shared object that will add
 MySQL database support to PHP. MySQL is an object-relational database
 management system. PHP is an HTML-embeddable scripting language. If
@@ -648,7 +688,7 @@ this package and the php package.
 This package use the MySQL Native Driver
 
 %package posix
-Summary: Modules for PHP scripts that need access to POSIX functions
+Summary: EOL Modules for PHP scripts that need access to POSIX functions
 Group: Development/Languages
 License: PHP
 Requires: %{?scl_prefix}php-common = %{version}-%{release}
@@ -656,12 +696,14 @@ Requires: %{?scl_prefix}php-cli = %{version}-%{release}
 Provides: %{?scl_prefix}php-posix = %{version}-%{release}, %{?scl_prefix}php-posix = %{version}-%{release}
 
 %description posix
+scl-php56 has reached End of Life.
+
 The php-posix package adds a PHP interface to those functions defined
 in the IEEE 1003.1 (POSIX.1) standards document which are not
 accessible through other means.
 
 %package pgsql
-Summary: A PostgreSQL database module for PHP
+Summary: EOL A PostgreSQL database module for PHP
 Group: Development/Languages
 # All files licensed under PHP version 3.01
 License: PHP
@@ -671,6 +713,8 @@ Provides: %{?scl_prefix}php-pdo_pgsql = %{version}-%{release}, %{?scl_prefix}php
 BuildRequires: krb5-devel, ea-openssl >= %{ea_openssl_ver}, ea-openssl-devel >= %{ea_openssl_ver}, postgresql-devel
 
 %description pgsql
+scl-php56 has reached End of Life.
+
 The %{?scl_prefix}php-pgsql package add PostgreSQL database support to PHP.
 PostgreSQL is an object-relational database management
 system that supports almost all SQL constructs. PHP is an
@@ -679,7 +723,7 @@ PostgreSQL, you should install this package in addition to the main
 php package.
 
 %package process
-Summary: Modules for PHP script using system process interfaces
+Summary: EOL Modules for PHP script using system process interfaces
 Group: Development/Languages
 # All files licensed under PHP version 3.01
 License: PHP
@@ -691,12 +735,14 @@ Provides: %{?scl_prefix}php-sysvshm = %{version}-%{release}, %{?scl_prefix}php-s
 Provides: %{?scl_prefix}php-sysvmsg = %{version}-%{release}, %{?scl_prefix}php-sysvmsg = %{version}-%{release}
 
 %description process
+scl-php56 has reached End of Life.
+
 The %{?scl_prefix}php-process package contains dynamic shared objects which add
 support to PHP using system interfaces for inter-process
 communication.
 
 %package odbc
-Summary: A module for PHP applications that use ODBC databases
+Summary: EOL A module for PHP applications that use ODBC databases
 Group: Development/Languages
 # All files licensed under PHP version 3.01, except
 # pdo_odbc is licensed under PHP version 3.0
@@ -707,6 +753,8 @@ Provides: %{?scl_prefix}php-pdo_odbc = %{version}-%{release}, %{?scl_prefix}php-
 BuildRequires: unixODBC-devel
 
 %description odbc
+scl-php56 has reached End of Life.
+
 The %{?scl_prefix}php-odbc package contains a dynamic shared object that will add
 database support through ODBC to PHP. ODBC is an open specification
 which provides a consistent API for developers to use for accessing
@@ -716,7 +764,7 @@ applications, you will need to install this package and the php
 package.
 
 %package soap
-Summary: A module for PHP applications that use the SOAP protocol
+Summary: EOL A module for PHP applications that use the SOAP protocol
 Group: Development/Languages
 # All files licensed under PHP version 3.01
 License: PHP
@@ -725,11 +773,13 @@ Requires: %{?scl_prefix}php-cli = %{version}-%{release}
 BuildRequires: ea-libxml2-devel
 
 %description soap
+scl-php56 has reached End of Life.
+
 The %{?scl_prefix}php-soap package contains a dynamic shared object that will add
 support to PHP for using the SOAP web services protocol.
 
 %package sockets
-Summary: A module for PHP applications that need low-level access to sockets
+Summary: EOL A module for PHP applications that need low-level access to sockets
 Group: Development/Languages
 License: PHP
 Requires: %{?scl_prefix}php-common = %{version}-%{release}
@@ -737,6 +787,8 @@ Requires: %{?scl_prefix}php-cli = %{version}-%{release}
 Provides: %{?scl_prefix}php-sockets = %{version}-%{release}, %{?scl_prefix}php-sockets = %{version}-%{release}
 
 %description sockets
+scl-php56 has reached End of Life.
+
 The php-sockets package delivers a module which will allow PHP scripts
 access to a low-level interface to the socket communication functions
 based on the popular BSD sockets, providing the possibility to act as
@@ -744,7 +796,7 @@ a socket server as well as a client.
 
 %if %{with_interbase}
 %package interbase
-Summary: A module for PHP applications that use Interbase/Firebird databases
+Summary: EOL A module for PHP applications that use Interbase/Firebird databases
 Group: Development/Languages
 # All files licensed under PHP version 3.01
 License: PHP
@@ -755,6 +807,8 @@ Provides: %{?scl_prefix}php-firebird = %{version}-%{release}, %{?scl_prefix}php-
 Provides: %{?scl_prefix}php-pdo_firebird = %{version}-%{release}, %{?scl_prefix}php-pdo_firebird = %{version}-%{release}
 
 %description interbase
+scl-php56 has reached End of Life.
+
 The %{?scl_prefix}php-interbase package contains a dynamic shared object that will add
 database support through Interbase/Firebird to PHP.
 
@@ -769,7 +823,7 @@ License.
 %endif
 
 %package snmp
-Summary: A module for PHP applications that query SNMP-managed devices
+Summary: EOL A module for PHP applications that query SNMP-managed devices
 Group: Development/Languages
 # All files licensed under PHP version 3.01
 License: PHP
@@ -778,13 +832,15 @@ Requires: %{?scl_prefix}php-cli = %{version}-%{release}
 BuildRequires: net-snmp-devel
 
 %description snmp
+scl-php56 has reached End of Life.
+
 The %{?scl_prefix}php-snmp package contains a dynamic shared object that will add
 support for querying SNMP devices to PHP.  PHP is an HTML-embeddable
 scripting language. If you need SNMP support for PHP applications, you
 will need to install this package and the php package.
 
 %package xml
-Summary: A module for PHP applications which use XML
+Summary: EOL A module for PHP applications which use XML
 Group: Development/Languages
 # All files licensed under PHP version 3.01
 License: PHP
@@ -801,12 +857,14 @@ BuildRequires: libxslt-devel >= 1.0.18-1, ea-libxml2-devel >= 2.4.14-1
 Requires: ea-libxml2 >= 2.4.14-1
 
 %description xml
+scl-php56 has reached End of Life.
+
 The %{?scl_prefix}php-xml package contains dynamic shared objects which add support
 to PHP for manipulating XML documents using the DOM tree,
 and performing XSL transformations on XML documents.
 
 %package xmlrpc
-Summary: A module for PHP applications which use the XML-RPC protocol
+Summary: EOL A module for PHP applications which use the XML-RPC protocol
 Group: Development/Languages
 # All files licensed under PHP version 3.01, except
 # libXMLRPC is licensed under BSD
@@ -815,11 +873,13 @@ Requires: %{?scl_prefix}php-common = %{version}-%{release}
 Requires: %{?scl_prefix}php-cli = %{version}-%{release}
 
 %description xmlrpc
+scl-php56 has reached End of Life.
+
 The %{?scl_prefix}php-xmlrpc package contains a dynamic shared object that will add
 support for the XML-RPC protocol to PHP.
 
 %package mbstring
-Summary: A module for PHP applications which need multi-byte string handling
+Summary: EOL A module for PHP applications which need multi-byte string handling
 Group: Development/Languages
 # All files licensed under PHP version 3.01, except
 # libmbfl is licensed under LGPLv2
@@ -830,11 +890,13 @@ Requires: %{?scl_prefix}php-common = %{version}-%{release}
 Requires: %{?scl_prefix}php-cli = %{version}-%{release}
 
 %description mbstring
+scl-php56 has reached End of Life.
+
 The %{?scl_prefix}php-mbstring package contains a dynamic shared object that will add
 support for multi-byte string handling to PHP.
 
 %package gd
-Summary: A module for PHP applications for using the gd graphics library
+Summary: EOL A module for PHP applications for using the gd graphics library
 Group: Development/Languages
 # bundled libgd is licensed under BSD
 License: PHP and BSD
@@ -852,11 +914,13 @@ BuildRequires: libvpx-devel
 %endif
 
 %description gd
+scl-php56 has reached End of Life.
+
 The %{?scl_prefix}php-gd package contains a dynamic shared object that will add
 support for using the gd graphics library to PHP.
 
 %package gmp
-Summary: A module for PHP applications for using the GNU MP library
+Summary: EOL A module for PHP applications for using the GNU MP library
 Group: Development/Languages
 # All files licensed under PHP version 3.01
 License: PHP
@@ -865,11 +929,13 @@ Requires: %{?scl_prefix}php-common = %{version}-%{release}
 Requires: %{?scl_prefix}php-cli = %{version}-%{release}
 
 %description gmp
+scl-php56 has reached End of Life.
+
 These functions allow you to work with arbitrary-length integers
 using the GNU MP library.
 
 %package bcmath
-Summary: A module for PHP applications for using the bcmath library
+Summary: EOL A module for PHP applications for using the bcmath library
 Group: Development/Languages
 # All files licensed under PHP version 3.01, except
 # libbcmath is licensed under LGPLv2+
@@ -878,11 +944,13 @@ Requires: %{?scl_prefix}php-common = %{version}-%{release}
 Requires: %{?scl_prefix}php-cli = %{version}-%{release}
 
 %description bcmath
+scl-php56 has reached End of Life.
+
 The %{?scl_prefix}php-bcmath package contains a dynamic shared object that will add
 support for using the bcmath library to PHP.
 
 %package dba
-Summary: A database abstraction layer module for PHP applications
+Summary: EOL A database abstraction layer module for PHP applications
 Group: Development/Languages
 # All files licensed under PHP version 3.01
 License: PHP
@@ -891,12 +959,14 @@ Requires: %{?scl_prefix}php-common = %{version}-%{release}
 Requires: %{?scl_prefix}php-cli = %{version}-%{release}
 
 %description dba
+scl-php56 has reached End of Life.
+
 The %{?scl_prefix}php-dba package contains a dynamic shared object that will add
 support for using the DBA database abstraction layer to PHP.
 
 %if %{with_mcrypt}
 %package mcrypt
-Summary: Standard PHP module provides mcrypt library support
+Summary: EOL Standard PHP module provides mcrypt library support
 Group: Development/Languages
 # All files licensed under PHP version 3.01
 License: PHP
@@ -906,13 +976,15 @@ Requires: %{ns_name}-libmcrypt
 BuildRequires: %{ns_name}-libmcrypt-devel
 
 %description mcrypt
+scl-php56 has reached End of Life.
+
 The %{?scl_prefix}php-mcrypt package contains a dynamic shared object that will add
 support for using the mcrypt library to PHP.
 %endif
 
 %if %{with_tidy}
 %package tidy
-Summary: Standard PHP module provides tidy library support
+Summary: EOL Standard PHP module provides tidy library support
 Group: Development/Languages
 # All files licensed under PHP version 3.01
 License: PHP
@@ -922,13 +994,15 @@ Requires: %{ns_name}-libtidy
 BuildRequires: %{ns_name}-libtidy-devel
 
 %description tidy
+scl-php56 has reached End of Life.
+
 The %{?scl_prefix}php-tidy package contains a dynamic shared object that will add
 support for using the tidy library to PHP.
 %endif
 
 %if %{with_mssql}
 %package mssql
-Summary: MSSQL database module for PHP
+Summary: EOL MSSQL database module for PHP
 Group: Development/Languages
 # All files licensed under PHP version 3.01
 License: PHP
@@ -938,6 +1012,8 @@ Requires: ea-freetds
 Provides: %{?scl_prefix}php-pdo_dblib = %{version}-%{release}, %{?scl_prefix}php-pdo_dblib = %{version}-%{release}
 
 %description mssql
+scl-php56 has reached End of Life.
+
 The %{?scl_prefix}php-mssql package contains a dynamic shared object that will
 add MSSQL database support to PHP.  It uses the TDS (Tabular
 DataStream) protocol through the freetds library, hence any
@@ -946,7 +1022,7 @@ database server which supports TDS can be accessed.
 
 %if %{with_embed}
 %package embedded
-Summary: PHP library for embedding in applications
+Summary: EOL PHP library for embedding in applications
 Group: System Environment/Libraries
 Requires: %{?scl_prefix}php-common = %{version}-%{release}
 Requires: %{?scl_prefix}php-cli = %{version}-%{release}
@@ -955,12 +1031,14 @@ Provides: %{?scl_prefix}php-embedded-devel = %{version}-%{release}
 Provides: %{?scl_prefix}php-embedded-devel = %{version}-%{release}
 
 %description embedded
+scl-php56 has reached End of Life.
+
 The %{?scl_prefix}php-embedded package contains a library which can be embedded
 into applications to provide PHP scripting language support.
 %endif
 
 %package pspell
-Summary: A module for PHP applications for using pspell interfaces
+Summary: EOL A module for PHP applications for using pspell interfaces
 Group: System Environment/Libraries
 # All files licensed under PHP version 3.01
 License: PHP
@@ -969,12 +1047,14 @@ Requires: %{?scl_prefix}php-cli = %{version}-%{release}
 BuildRequires: aspell-devel >= 0.50.0
 
 %description pspell
+scl-php56 has reached End of Life.
+
 The %{?scl_prefix}php-pspell package contains a dynamic shared object that will add
 support for using the pspell library to PHP.
 
 %if %{with_recode}
 %package recode
-Summary: A module for PHP applications for using the recode library
+Summary: EOL A module for PHP applications for using the recode library
 Group: System Environment/Libraries
 # All files licensed under PHP version 3.01
 License: PHP
@@ -984,12 +1064,14 @@ BuildRequires: recode-devel
 Conflicts: %{?scl_prefix}php-imap = %{version}-%{release}
 
 %description recode
+scl-php56 has reached End of Life.
+
 The %{?scl_prefix}php-recode package contains a dynamic shared object that will add
 support for using the recode library to PHP.
 %endif
 
 %package intl
-Summary: Internationalization extension for PHP applications
+Summary: EOL Internationalization extension for PHP applications
 Group: System Environment/Libraries
 # All files licensed under PHP version 3.01
 License: PHP
@@ -998,12 +1080,14 @@ Requires: %{?scl_prefix}php-cli = %{version}-%{release}
 BuildRequires: libicu-devel >= 4.0
 
 %description intl
+scl-php56 has reached End of Life.
+
 The %{?scl_prefix}php-intl package contains a dynamic shared object that will add
 support for using the ICU library to PHP.
 
 %if %{with_enchant}
 %package enchant
-Summary: Enchant spelling extension for PHP applications
+Summary: EOL Enchant spelling extension for PHP applications
 # All files licensed under PHP version 3.0
 License: PHP
 Group: System Environment/Libraries
@@ -1012,13 +1096,15 @@ Requires: %{?scl_prefix}php-cli = %{version}-%{release}
 BuildRequires: enchant-devel >= 1.2.4
 
 %description enchant
+scl-php56 has reached End of Life.
+
 The %{?scl_prefix}php-enchant package contains a dynamic shared object that will add
 support for using the enchant library to PHP.
 %endif
 
 %if %{with_zip}
 %package zip
-Summary: A module for PHP applications that need to handle .zip files
+Summary: EOL A module for PHP applications that need to handle .zip files
 Group: Development/Languages
 License: PHP
 Requires: %{?scl_prefix}php-common = %{version}-%{release}
@@ -1026,6 +1112,8 @@ Requires: %{?scl_prefix}php-cli = %{version}-%{release}
 Provides: %{?scl_prefix}php-zip = %{version}-%{release}, %{?scl_prefix}php-zip = %{version}-%{release}
 
 %description zip
+scl-php56 has reached End of Life.
+
 The %{?scl_prefix}php-zip package delivers a module which will allow PHP scripts
 to transparently read or write ZIP compressed archives and the files
 inside them.
@@ -1950,6 +2038,9 @@ fi
 
 
 %changelog
+* Thu Apr 09 2026 Brian Mendoza <brian.mendoza@webpros.com> - 5.6.40-25
+- EA4-173: Mark ea-scl-php56 as EOL
+
 * Tue Oct 14 2025 Chris Castillo <chris.castillo@webpros.com> - 5.6.40-24
 - EA4-136: Fix libxml2 v2.15.0 compatibility
 
